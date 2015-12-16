@@ -9,7 +9,7 @@ use Spryker\Zed\ProductOptionCartConnector\ProductOptionCartConnectorDependencyP
 use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
 use Spryker\Zed\ProductOptionCartConnector\Business\ProductOptionCartConnectorFacade;
 
-class ProductOptionCartConnectorDependencyContainer extends AbstractCommunicationFactory
+class ProductOptionCartConnectorCommunicationFactory extends AbstractCommunicationFactory
 {
 
     /**
