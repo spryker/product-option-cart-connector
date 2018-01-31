@@ -7,7 +7,7 @@
 
 namespace Spryker\Zed\ProductOptionCartConnector\Dependency\Facade;
 
-class ProductOptionCartConnectorToProductOptionBridge implements ProductOptionCartConnectorToProductOptionInterface
+class ProductOptionCartConnectorToProductOptionFacadeBridge implements ProductOptionCartConnectorToProductOptionFacadeInterface
 {
     /**
      * @var \Spryker\Zed\ProductOption\Business\ProductOptionFacadeInterface
@@ -30,6 +30,16 @@ class ProductOptionCartConnectorToProductOptionBridge implements ProductOptionCa
     public function getProductOptionValue($idProductOptionValueUsage)
     {
         return $this->productOptionFacade->getProductOptionValueById($idProductOptionValueUsage);
+    }
+
+    /**
+     * @param int $idProductOptionValue
+     *
+     * @return \Generated\Shared\Transfer\ProductOptionTransfer
+     */
+    public function getProductOptionValueById($idProductOptionValue)
+    {
+        return $this->productOptionFacade->getProductOptionValueById($idProductOptionValue);
     }
 
     /**

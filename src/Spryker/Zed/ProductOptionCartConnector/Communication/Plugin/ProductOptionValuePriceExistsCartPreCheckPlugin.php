@@ -8,26 +8,40 @@
 namespace Spryker\Zed\ProductOptionCartConnector\Communication\Plugin;
 
 use Generated\Shared\Transfer\CartChangeTransfer;
-use Spryker\Zed\Cart\Dependency\ItemExpanderPluginInterface;
+use Spryker\Zed\Cart\Dependency\CartPreCheckPluginInterface;
+use Spryker\Zed\Cart\Dependency\TerminationAwareCartPreCheckPluginInterface;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 
 /**
  * @method \Spryker\Zed\ProductOptionCartConnector\Business\ProductOptionCartConnectorFacadeInterface getFacade()
  * @method \Spryker\Zed\ProductOptionCartConnector\Communication\ProductOptionCartConnectorCommunicationFactory getFactory()
  */
-class CartItemProductOptionPlugin extends AbstractPlugin implements ItemExpanderPluginInterface
+class ProductOptionValuePriceExistsCartPreCheckPlugin extends AbstractPlugin implements CartPreCheckPluginInterface, TerminationAwareCartPreCheckPluginInterface
 {
     /**
      * {@inheritdoc}
      *
+     * @api
+     *
      * @param \Generated\Shared\Transfer\CartChangeTransfer $cartChangeTransfer
      *
-     * @return \Generated\Shared\Transfer\CartChangeTransfer
+     * @return \Generated\Shared\Transfer\CartPreCheckResponseTransfer
      */
-    public function expandItems(CartChangeTransfer $cartChangeTransfer)
+    public function check(CartChangeTransfer $cartChangeTransfer)
     {
-        $this->getFacade()->expandProductOptions($cartChangeTransfer);
+        return $this->getFacade()
+            ->validateProductOptionValuePrices($cartChangeTransfer);
+    }
 
-        return $cartChangeTransfer;
+    /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
+     * @return bool
+     */
+    public function terminateOnFailure()
+    {
+        return true;
     }
 }
