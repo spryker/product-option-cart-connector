@@ -1,4 +1,0 @@
-parameters:
-    checkMissingIterableValueType: false
-    ignoreErrors:
-        - '#Function twig_escape_filter not found.#'

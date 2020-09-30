@@ -1,5 +1,0 @@
-parameters:
-    checkMissingIterableValueType: false
-    ignoreErrors:
-        - '#constructor expects Symfony\\Contracts\\Translation\\TranslatorInterface#'
-    reportUnmatchedIgnoredErrors: false
