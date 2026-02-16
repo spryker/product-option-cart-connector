@@ -20,7 +20,7 @@ class ProductOptionCartConnectorRepository extends AbstractRepository implements
      *
      * @param list<int> $productOptionValueIds
      *
-     * @return list<int>
+     * @return array<int>
      */
     public function filterProductOptionValueIdsByActiveGroup(array $productOptionValueIds): array
     {

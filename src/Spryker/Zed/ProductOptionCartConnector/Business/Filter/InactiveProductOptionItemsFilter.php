@@ -88,7 +88,7 @@ class InactiveProductOptionItemsFilter implements InactiveProductOptionItemsFilt
     /**
      * @param \Generated\Shared\Transfer\CartChangeTransfer $cartChangeTransfer
      *
-     * @return list<int>
+     * @return array<int>
      */
     protected function getIndexedProductOptionValueIds(CartChangeTransfer $cartChangeTransfer): array
     {

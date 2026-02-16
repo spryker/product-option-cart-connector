@@ -10,9 +10,9 @@ namespace Spryker\Zed\ProductOptionCartConnector\Persistence;
 interface ProductOptionCartConnectorRepositoryInterface
 {
     /**
-     * @param list<int> $productOptionValueIds
+     * @param array<int> $productOptionValueIds
      *
-     * @return list<int>
+     * @return array<int>
      */
     public function filterProductOptionValueIdsByActiveGroup(array $productOptionValueIds): array;
 }
