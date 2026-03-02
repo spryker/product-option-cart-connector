@@ -24,11 +24,6 @@ class ProductOptionCartConnectorToMessengerFacadeBridge implements ProductOption
         $this->messengerFacade = $messengerFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\MessageTransfer $message
-     *
-     * @return void
-     */
     public function addInfoMessage(MessageTransfer $message): void
     {
         $this->messengerFacade->addInfoMessage($message);

@@ -17,9 +17,6 @@ use Spryker\Zed\ProductOptionCartConnector\ProductOptionCartConnectorDependencyP
  */
 class ProductOptionCartConnectorPersistenceFactory extends AbstractPersistenceFactory
 {
-    /**
-     * @return \Orm\Zed\ProductOption\Persistence\SpyProductOptionValueQuery
-     */
     public function getProductOptionValuePropelQuery(): SpyProductOptionValueQuery
     {
         return $this->getProvidedDependency(ProductOptionCartConnectorDependencyProvider::PROPEL_QUERY_PRODUCT_OPTION_VALUE);

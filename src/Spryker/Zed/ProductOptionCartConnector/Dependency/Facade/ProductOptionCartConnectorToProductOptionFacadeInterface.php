@@ -26,10 +26,5 @@ interface ProductOptionCartConnectorToProductOptionFacadeInterface
      */
     public function getProductOptionValueById($idProductOptionValue, ?string $currencyCode = null);
 
-    /**
-     * @param int $idProductOptionValue
-     *
-     * @return bool
-     */
     public function checkProductOptionGroupExistenceByProductOptionValueId(int $idProductOptionValue): bool;
 }

@@ -26,9 +26,6 @@ use Spryker\Zed\ProductOptionCartConnector\Business\Model\GroupKeyExpander;
  */
 class GroupKeyExpanderTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testKeyGroupByProvidedOptions(): void
     {
         $changeTransfer = $this->createCartChangeTransfer(
@@ -47,9 +44,6 @@ class GroupKeyExpanderTest extends Unit
         $this->assertSame('1-2', $cartItem->getGroupKey());
     }
 
-    /**
-     * @return void
-     */
     public function testWithExistingGroupKey(): void
     {
         $changeTransfer = $this->createCartChangeTransfer(
@@ -70,9 +64,6 @@ class GroupKeyExpanderTest extends Unit
         $this->assertSame('SKU-1-2', $cartItem->getGroupKey());
     }
 
-    /**
-     * @return void
-     */
     public function testWithDifferentOptionsOrder(): void
     {
         $changeTransfer = $this->createCartChangeTransfer(
@@ -102,11 +93,6 @@ class GroupKeyExpanderTest extends Unit
         $this->assertSame('A-1-2-3', $cartItem->getGroupKey());
     }
 
-    /**
-     * @param array $cartItems
-     *
-     * @return \Generated\Shared\Transfer\CartChangeTransfer
-     */
     protected function createCartChangeTransfer(array $cartItems): CartChangeTransfer
     {
         $changeTransfer = new CartChangeTransfer();

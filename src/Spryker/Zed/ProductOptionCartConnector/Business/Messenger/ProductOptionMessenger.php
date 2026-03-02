@@ -22,9 +22,6 @@ class ProductOptionMessenger implements ProductOptionMessengerInterface
      */
     protected const MESSAGE_PARAM_SKU = '%sku%';
 
-    /**
-     * @param \Spryker\Zed\ProductOptionCartConnector\Dependency\Facade\ProductOptionCartConnectorToMessengerFacadeInterface $messengerFacade
-     */
     public function __construct(
         protected ProductOptionCartConnectorToMessengerFacadeInterface $messengerFacade
     ) {

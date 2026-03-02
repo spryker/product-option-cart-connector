@@ -36,10 +36,6 @@ class ProductOptionValuePriceValidator implements ProductOptionValuePriceValidat
      */
     protected $priceFacade;
 
-    /**
-     * @param \Spryker\Zed\ProductOptionCartConnector\Dependency\Facade\ProductOptionCartConnectorToProductOptionFacadeInterface $productOptionFacade
-     * @param \Spryker\Zed\ProductOptionCartConnector\Dependency\Facade\ProductOptionCartConnectorToPriceFacadeInterface $priceFacade
-     */
     public function __construct(
         ProductOptionCartConnectorToProductOptionFacadeInterface $productOptionFacade,
         ProductOptionCartConnectorToPriceFacadeInterface $priceFacade

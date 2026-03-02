@@ -71,9 +71,6 @@ class ProductOptionCartConnectorBusinessFactory extends AbstractBusinessFactory
         return new GroupKeyExpander();
     }
 
-    /**
-     * @return \Spryker\Zed\ProductOptionCartConnector\Business\Model\ProductOptionValidatorInterface
-     */
     public function createProductOptionValidator(): ProductOptionValidatorInterface
     {
         return new ProductOptionValidator($this->getProductOptionFacade());
@@ -90,9 +87,6 @@ class ProductOptionCartConnectorBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ProductOptionCartConnector\Business\Filter\InactiveProductOptionItemsFilterInterface
-     */
     public function createInactiveProductOptionItemsFilter(): InactiveProductOptionItemsFilterInterface
     {
         return new InactiveProductOptionItemsFilter(
@@ -101,17 +95,11 @@ class ProductOptionCartConnectorBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ProductOptionCartConnector\Business\Messenger\ProductOptionMessengerInterface
-     */
     public function createProductOptionMessenger(): ProductOptionMessengerInterface
     {
         return new ProductOptionMessenger($this->getMessengerFacade());
     }
 
-    /**
-     * @return \Spryker\Zed\ProductOptionCartConnector\Dependency\Facade\ProductOptionCartConnectorToMessengerFacadeInterface
-     */
     public function getMessengerFacade(): ProductOptionCartConnectorToMessengerFacadeInterface
     {
         return $this->getProvidedDependency(ProductOptionCartConnectorDependencyProvider::FACADE_MESSENGER);

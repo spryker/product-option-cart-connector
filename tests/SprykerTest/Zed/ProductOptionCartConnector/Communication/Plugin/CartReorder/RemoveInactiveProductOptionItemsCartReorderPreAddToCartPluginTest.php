@@ -52,9 +52,6 @@ class RemoveInactiveProductOptionItemsCartReorderPreAddToCartPluginTest extends 
      */
     protected ProductOptionCartConnectorCommunicationTester $tester;
 
-    /**
-     * @return void
-     */
     public function testThrowsNullValueExceptionWhenIdProductOptionValueIsNotSet(): void
     {
         // Arrange
@@ -70,9 +67,6 @@ class RemoveInactiveProductOptionItemsCartReorderPreAddToCartPluginTest extends 
         (new RemoveInactiveProductOptionItemsCartReorderPreAddToCartPlugin())->preAddToCart($cartChangeTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testThrowsNullValueExceptionWhenFilteredOutItemSkuIsNotSet(): void
     {
         // Arrange
@@ -94,9 +88,6 @@ class RemoveInactiveProductOptionItemsCartReorderPreAddToCartPluginTest extends 
         (new RemoveInactiveProductOptionItemsCartReorderPreAddToCartPlugin())->preAddToCart($cartChangeTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testFiltersOutItemWithInactiveProductOption(): void
     {
         // Arrange
@@ -131,9 +122,6 @@ class RemoveInactiveProductOptionItemsCartReorderPreAddToCartPluginTest extends 
         $this->assertSame('sku3', $filteredCartChangeTransfer->getItems()->offsetGet(1)->getSku());
     }
 
-    /**
-     * @return void
-     */
     public function testDoesNotFilterOutItemsWithoutProductOptions(): void
     {
         // Arrange
@@ -150,9 +138,6 @@ class RemoveInactiveProductOptionItemsCartReorderPreAddToCartPluginTest extends 
         $this->assertSame('sku2', $filteredCartChangeTransfer->getItems()->offsetGet(1)->getSku());
     }
 
-    /**
-     * @return void
-     */
     public function testAddsInfoMessageForFilteredOutItems(): void
     {
         // Arrange
@@ -180,11 +165,6 @@ class RemoveInactiveProductOptionItemsCartReorderPreAddToCartPluginTest extends 
         (new RemoveInactiveProductOptionItemsCartReorderPreAddToCartPlugin())->preAddToCart($cartChangeTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\MessageTransfer $messageTransfer
-     *
-     * @return void
-     */
     protected function mockMessengerFacadeDependency(MessageTransfer $messageTransfer): void
     {
         $messengerFacadeMock = $this->createMock(ProductOptionCartConnectorToMessengerFacadeInterface::class);

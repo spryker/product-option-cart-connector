@@ -36,19 +36,11 @@ class ProductOptionValidator implements ProductOptionValidatorInterface
      */
     protected static $idProductOptionCache = [];
 
-    /**
-     * @param \Spryker\Zed\ProductOptionCartConnector\Dependency\Facade\ProductOptionCartConnectorToProductOptionFacadeInterface $productOptionFacade
-     */
     public function __construct(ProductOptionCartConnectorToProductOptionFacadeInterface $productOptionFacade)
     {
         $this->productOptionFacade = $productOptionFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CartChangeTransfer $cartChangeTransfer
-     *
-     * @return \Generated\Shared\Transfer\CartPreCheckResponseTransfer
-     */
     public function checkProductOptionExistence(CartChangeTransfer $cartChangeTransfer): CartPreCheckResponseTransfer
     {
         $cartPreCheckResponseTransfer = new CartPreCheckResponseTransfer();
@@ -64,11 +56,6 @@ class ProductOptionValidator implements ProductOptionValidatorInterface
         return $this->setResponseIsSuccess($cartPreCheckResponseTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductOptionTransfer $productOptionTransfer
-     *
-     * @return bool
-     */
     public function productOptionExists(ProductOptionTransfer $productOptionTransfer): bool
     {
         $idProductOptionValue = (int)$productOptionTransfer->getIdProductOptionValue();
@@ -81,11 +68,6 @@ class ProductOptionValidator implements ProductOptionValidatorInterface
         return static::$idProductOptionCache[$idProductOptionValue];
     }
 
-    /**
-     * @param string $translationKey
-     *
-     * @return \Generated\Shared\Transfer\MessageTransfer
-     */
     protected function createViolationMessage(string $translationKey): MessageTransfer
     {
         $messageTransfer = new MessageTransfer();
@@ -94,11 +76,6 @@ class ProductOptionValidator implements ProductOptionValidatorInterface
         return $messageTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CartPreCheckResponseTransfer $cartPreCheckResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\CartPreCheckResponseTransfer
-     */
     protected function setResponseIsSuccess(CartPreCheckResponseTransfer $cartPreCheckResponseTransfer): CartPreCheckResponseTransfer
     {
         $isSuccessful = count($cartPreCheckResponseTransfer->getMessages()) === 0;
@@ -107,12 +84,6 @@ class ProductOptionValidator implements ProductOptionValidatorInterface
         return $cartPreCheckResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     * @param \Generated\Shared\Transfer\CartPreCheckResponseTransfer $cartPreCheckResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\CartPreCheckResponseTransfer
-     */
     protected function validateProductOptions(
         ItemTransfer $itemTransfer,
         CartPreCheckResponseTransfer $cartPreCheckResponseTransfer

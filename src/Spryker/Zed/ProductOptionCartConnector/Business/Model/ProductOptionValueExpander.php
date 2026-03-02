@@ -30,10 +30,6 @@ class ProductOptionValueExpander implements ProductOptionValueExpanderInterface
      */
     protected static $grossPriceModeIdentifierBuffer;
 
-    /**
-     * @param \Spryker\Zed\ProductOptionCartConnector\Dependency\Facade\ProductOptionCartConnectorToProductOptionFacadeInterface $productOptionFacade
-     * @param \Spryker\Zed\ProductOptionCartConnector\Dependency\Facade\ProductOptionCartConnectorToPriceFacadeInterface $priceFacade
-     */
     public function __construct(
         ProductOptionCartConnectorToProductOptionFacadeInterface $productOptionFacade,
         ProductOptionCartConnectorToPriceFacadeInterface $priceFacade
@@ -59,13 +55,6 @@ class ProductOptionValueExpander implements ProductOptionValueExpanderInterface
         return $changeTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     * @param string $priceMode
-     * @param string $currencyCode
-     *
-     * @return void
-     */
     protected function expandProductOptionTransfers(ItemTransfer $itemTransfer, string $priceMode, string $currencyCode): void
     {
         $productOptions = $itemTransfer->getProductOptions();

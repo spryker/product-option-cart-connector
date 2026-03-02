@@ -54,9 +54,6 @@ class ProductOptionCartConnectorFacadeTest extends Unit
      */
     protected $productOptionCartConnectorFacade;
 
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
@@ -69,9 +66,6 @@ class ProductOptionCartConnectorFacadeTest extends Unit
         $this->tester->addCurrentStore($this->tester->haveStore([StoreTransfer::NAME => 'DE']));
     }
 
-    /**
-     * @return void
-     */
     public function testExpandProductOptionsSanitizesNetPriceWhenGrossPriceModeIsActive(): void
     {
         // Assign
@@ -91,9 +85,6 @@ class ProductOptionCartConnectorFacadeTest extends Unit
         $this->assertSame($expectedResult, $actualResult->getItems()[0]->getProductOptions()[0]->getUnitNetPrice());
     }
 
-    /**
-     * @return void
-     */
     public function testExpandProductOptionsSanitizesGrossPriceWhenNetPriceModeIsActive(): void
     {
         // Assign
@@ -113,9 +104,6 @@ class ProductOptionCartConnectorFacadeTest extends Unit
         $this->assertSame($expectedResult, $actualResult->getItems()[0]->getProductOptions()[0]->getUnitGrossPrice());
     }
 
-    /**
-     * @return void
-     */
     public function testExpandProductOptionsExpandsProductOptions(): void
     {
         // Assign
@@ -134,9 +122,6 @@ class ProductOptionCartConnectorFacadeTest extends Unit
         $this->assertEquals($expectedResult->toArray(), $actualResult->getItems()[0]->getProductOptions()[0]->toArray());
     }
 
-    /**
-     * @return void
-     */
     public function testValidateProductOptionValuePricesValidatesAllOptions(): void
     {
         // Assign
@@ -182,9 +167,6 @@ class ProductOptionCartConnectorFacadeTest extends Unit
         $this->assertSame($expectedProductOptionErrorCount, $actualResult->getMessages()->count());
     }
 
-    /**
-     * @return void
-     */
     public function testValidateProductOptionValuePricesReturnsSuccessFlagWhenNoViolationWasFound(): void
     {
         // Assign
@@ -230,9 +212,6 @@ class ProductOptionCartConnectorFacadeTest extends Unit
         $this->assertSame($expectedResult, $actualResponse->getIsSuccess());
     }
 
-    /**
-     * @return void
-     */
     public function testValidateProductOptionValuePricesReturnsUnsuccessfulFlagWhenViolationWasFound(): void
     {
         // Assign
@@ -285,9 +264,6 @@ class ProductOptionCartConnectorFacadeTest extends Unit
         $this->assertSame($expectedResult, $actualResponse->getIsSuccess());
     }
 
-    /**
-     * @return void
-     */
     public function testValidateProductOptionValuePricesUsesDefaultPriceModeForValidationWhenPriceModeIsNotDefined(): void
     {
         // Assign
@@ -324,9 +300,6 @@ class ProductOptionCartConnectorFacadeTest extends Unit
         $this->assertSame($expectedResult, $actualResponse->getIsSuccess());
     }
 
-    /**
-     * @return void
-     */
     public function testValidateProductOptionValuePricesUsesNetPricesForValidationWhenPriceModeIsSetAsNet(): void
     {
         // Assign
@@ -356,9 +329,6 @@ class ProductOptionCartConnectorFacadeTest extends Unit
         $this->assertSame($expectedResult, $actualResponse->getIsSuccess());
     }
 
-    /**
-     * @return void
-     */
     public function testValidateProductOptionValuePricesUsesGrossPricesForValidationWhenPriceModeIsSetAsGross(): void
     {
         // Assign
@@ -388,9 +358,6 @@ class ProductOptionCartConnectorFacadeTest extends Unit
         $this->assertSame($expectedResult, $actualResponse->getIsSuccess());
     }
 
-    /**
-     * @return void
-     */
     public function testCheckProductOptionExistenceShouldWriteErrorWhenOptionDoesNotExist(): void
     {
         $cartChangeTransfer = new CartChangeTransfer();
@@ -409,27 +376,16 @@ class ProductOptionCartConnectorFacadeTest extends Unit
         $this->assertCount(1, $cartPreCheckResponseTransfer->getMessages());
     }
 
-    /**
-     * @return string
-     */
     protected function getGrossPriceModeIdentifier(): string
     {
         return $this->tester->getLocator()->price()->facade()->getGrossPriceModeIdentifier();
     }
 
-    /**
-     * @return string
-     */
     protected function getNetPriceModeIdentifier(): string
     {
         return $this->tester->getLocator()->price()->facade()->getNetPriceModeIdentifier();
     }
 
-    /**
-     * @param string|null $priceMode
-     *
-     * @return \Generated\Shared\Transfer\CartChangeTransfer
-     */
     protected function createCartChangeTransfer(?string $priceMode): CartChangeTransfer
     {
         $quoteTransfer = (new QuoteTransfer())
@@ -442,11 +398,6 @@ class ProductOptionCartConnectorFacadeTest extends Unit
         return $cartChangeTransfer;
     }
 
-    /**
-     * @param string|null $priceMode
-     *
-     * @return \Generated\Shared\Transfer\CartChangeTransfer
-     */
     protected function createCartChangeTransferWithDefaultItem(?string $priceMode): CartChangeTransfer
     {
         $cartChangeTransfer = $this->createCartChangeTransfer($priceMode);
@@ -498,38 +449,21 @@ class ProductOptionCartConnectorFacadeTest extends Unit
         $this->productOptionCartConnectorFacade = $this->tester->getLocator()->productOptionCartConnector()->facade();
     }
 
-    /**
-     * @return string
-     */
     protected function getDefaultPriceMode(): string
     {
         return $this->tester->getLocator()->price()->facade()->getDefaultPriceMode();
     }
 
-    /**
-     * @return string
-     */
     protected function getCurrentCurrencyCode(): string
     {
         return $this->tester->getLocator()->currency()->facade()->getCurrent()->getCode();
     }
 
-    /**
-     * @return string
-     */
     protected function getCurrentStoreName(): string
     {
         return $this->tester->getLocator()->store()->facade()->getCurrentStore()->getName();
     }
 
-    /**
-     * @param string $currencyCode
-     * @param string|null $storeName
-     * @param int|null $grossAmount
-     * @param int|null $netAmount
-     *
-     * @return array
-     */
     protected function createPriceData(string $currencyCode, ?string $storeName, ?int $grossAmount, ?int $netAmount): array
     {
         return [
@@ -540,11 +474,6 @@ class ProductOptionCartConnectorFacadeTest extends Unit
         ];
     }
 
-    /**
-     * @param array $prices
-     *
-     * @return \Generated\Shared\Transfer\ProductOptionTransfer
-     */
     protected function createProductOption(array $prices): ProductOptionTransfer
     {
         $productOptionGroupTransfer = $this->tester->haveProductOptionGroupWithValues(

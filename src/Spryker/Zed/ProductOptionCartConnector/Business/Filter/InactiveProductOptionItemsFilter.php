@@ -15,21 +15,12 @@ use Spryker\Zed\ProductOptionCartConnector\Persistence\ProductOptionCartConnecto
 
 class InactiveProductOptionItemsFilter implements InactiveProductOptionItemsFilterInterface
 {
-    /**
-     * @param \Spryker\Zed\ProductOptionCartConnector\Persistence\ProductOptionCartConnectorRepositoryInterface $productOptionCartConnectorRepository
-     * @param \Spryker\Zed\ProductOptionCartConnector\Business\Messenger\ProductOptionMessengerInterface $productOptionMessenger
-     */
     public function __construct(
         protected ProductOptionCartConnectorRepositoryInterface $productOptionCartConnectorRepository,
         protected ProductOptionMessengerInterface $productOptionMessenger
     ) {
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CartChangeTransfer $cartChangeTransfer
-     *
-     * @return \Generated\Shared\Transfer\CartChangeTransfer
-     */
     public function filterOutInactiveProductOptionCartChangeItems(
         CartChangeTransfer $cartChangeTransfer
     ): CartChangeTransfer {
